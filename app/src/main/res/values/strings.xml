@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Approval Matrix</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="approver">
+        <item>GROUPMG1</item>
+        <item>GROUPMG2</item>
+        <item>GROUPMG3</item>
+        <item>GROUPFM1</item>
+        <item>GROUPFM2</item>
+        <item>GROUPFM3</item>
+        <item>GROUPACROSS</item>
+        <item>FD1</item>
+        <item>FD2</item>
+        <item>CFO</item>
+    </string-array>
+</resources>
