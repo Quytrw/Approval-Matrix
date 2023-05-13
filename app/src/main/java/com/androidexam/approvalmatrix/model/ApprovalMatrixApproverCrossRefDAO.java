@@ -17,6 +17,9 @@ public interface ApprovalMatrixApproverCrossRefDAO {
     @Query("SELECT * FROM ApprovalMatrixApproverCrossRef")
     List<ApprovalMatrixApproverCrossRef> getAllApprovalMatrixApproverCrossRefs();
 
+    @Query("SELECT * FROM ApprovalMatrixApproverCrossRef WHERE matrixId = :matrixId")
+    List<ApprovalMatrixApproverCrossRef> getApprovalMatrixApproverCrossRefListByMatrixId(int matrixId);
+
     @Query("SELECT * FROM ApprovalMatrixApproverCrossRef WHERE matrixId = :matrixId AND approverId = :approverId")
     ApprovalMatrixApproverCrossRef getApprovalMatrixApproverCrossRefByIds(int matrixId, int approverId);
 

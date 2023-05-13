@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
+    android:paddingVertical="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -30,14 +31,14 @@
 
 
     <TextView
-        android:id="@+id/rv_approver"
+        android:id="@+id/tv_approverl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="GROUPMG1,GROUPMG2,GROUPMG3"
+        android:singleLine="false"
         android:textColor="@color/blue"
         android:textAlignment="textEnd"
         android:layout_weight="1"
-        android:layout_marginVertical="5dp"
         />
 
 

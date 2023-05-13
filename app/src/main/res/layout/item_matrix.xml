@@ -42,7 +42,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="IDR"
-                    android:layout_marginLeft="-20dp"
                     android:textColor="@color/blue"
                     />
                 <TextView
@@ -75,7 +74,6 @@
                     android:layout_height="wrap_content"
                     android:text="IDR"
                     android:textColor="@color/blue"
-                    android:layout_marginLeft="-20dp"
                     />
                 <TextView
                     android:id="@+id/tv_maxRange"

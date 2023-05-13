@@ -25,11 +25,14 @@ import com.androidexam.approvalmatrix.model.Approver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<ApproverRecyclerViewAdapterCrUp.ViewHolder>
 {
-    private List<ApprovalMatrixApproverCrossRef> arrayList = new ArrayList<>();
+//    private List<ApprovalMatrixApproverCrossRef> arrayList = new ArrayList<>();
+    private HashMap<Integer,List<ApprovalMatrixApproverCrossRef>> listHashMap;
 
     private Context context;
     private LayoutInflater inflater;
@@ -39,15 +42,17 @@ public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<Approv
     public List<Boolean> isValid;
 
     private int number;
+    private int matrixId;
 
     ArrayList<Integer> approverItem = new ArrayList<>();
 
     public ApproverRecyclerViewAdapterCrUp(Context context, int matrixId, int number) {
-        arrayList = new ArrayList<>();
+        listHashMap = new HashMap<>();
         isValid = new ArrayList<>();
+        this.matrixId = matrixId;
         for(int i = 0; i < number; i++)
         {
-            arrayList.add(new ApprovalMatrixApproverCrossRef(matrixId, 0, 0));
+            listHashMap.put(i, new ArrayList<>());
             isValid.add(false);
         }
         itemChecked = new ArrayList<>();
@@ -121,6 +126,7 @@ public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<Approv
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        ArrayList<ApprovalMatrixApproverCrossRef> list = new ArrayList<>();
                         int count = 0;
                         for (boolean checked : checkedItems) {
                             if (checked) {
@@ -131,12 +137,12 @@ public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<Approv
                         for (int i = 0; i < checkedItems.length; i++) {
                             if (checkedItems[i]) {
                                 item += approverNames[i];
-                                arrayList.get(holder.getAdapterPosition()).setApproverId(i + 1);
-                                arrayList.get(holder.getAdapterPosition()).setOrderIndex(holder.getAdapterPosition());
+                                ApprovalMatrixApproverCrossRef crossRef = new ApprovalMatrixApproverCrossRef(matrixId, i + 1, holder.getAdapterPosition());
                                 count--;
                                 if (count > 0) {
                                     item += ", ";
                                 }
+                                list.add(crossRef);
                             }
                         }
                         if(count == 0)
@@ -149,6 +155,7 @@ public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<Approv
                         }
                         holder.textViewApprover.setText(item);
 
+                        listHashMap.put(holder.getAdapterPosition(), list);
                         itemChecked.set(holder.getAdapterPosition(), checkedItems);
                     }
                 });
@@ -185,7 +192,7 @@ public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<Approv
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return listHashMap.size();
     }
 
 
@@ -222,6 +229,13 @@ public class ApproverRecyclerViewAdapterCrUp extends RecyclerView.Adapter<Approv
     }
 
     public List<ApprovalMatrixApproverCrossRef> getArrayList() {
-        return arrayList;
+        Collection<List<ApprovalMatrixApproverCrossRef>> values = new ArrayList<>();
+        values = listHashMap.values();
+
+        List<ApprovalMatrixApproverCrossRef> crossRefList = new ArrayList<>();
+        for (List<ApprovalMatrixApproverCrossRef> list : values) {
+            crossRefList.addAll(list);
+        }
+        return crossRefList;
     }
 }
