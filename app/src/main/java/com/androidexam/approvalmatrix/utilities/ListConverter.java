@@ -2,22 +2,26 @@ package com.androidexam.approvalmatrix.utilities;
 
 import androidx.room.TypeConverter;
 
+import com.androidexam.approvalmatrix.model.Approver;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class ListConverter {
 
     @TypeConverter
-    public static List<List<String>> jsonToListString(String value)
-    {
-        return new Gson().fromJson(value, new TypeToken<List<List<String>>>(){}.getType());
+    public static List<String> fromString(String value) {
+        Type listType = new TypeToken<List<String>>(){}.getType();
+        return new Gson().fromJson(value, listType);
     }
 
     @TypeConverter
-    public static String listStringToJson(List<List<String>> value)
-    {
-        return new Gson().toJson(value);
+    public static String fromList(List<String> list) {
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        return json;
     }
+
 }

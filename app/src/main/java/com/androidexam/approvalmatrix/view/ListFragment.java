@@ -32,7 +32,6 @@ public class ListFragment extends Fragment {
                 R.layout.fragment_list, container, false);
 
         viewModel = new ListFragmentViewModel();
-
         binding.setListFragmentViewModel(viewModel);
 
         viewModel.getButtonAddClicked().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
@@ -42,7 +41,7 @@ public class ListFragment extends Fragment {
                 {
                     FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.replace(R.id.fr_main, new CreateUpdateFragment())
+                    transaction.replace(R.id.fr_main, new CreateFragment())
                             .addToBackStack(null)
                             .commit();
                     viewModel.getButtonAddClicked().setValue(false);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateUpdateFragment">
+    tools:context=".view.UpdateFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Create New Approval Matrix"
+                android:text="Update Approval Matrix"
                 android:textAlignment="center"
                 android:textColor="@color/primary_color"
                 android:textSize="20sp"
@@ -42,6 +42,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/shape_item_cr_up"
@@ -59,29 +60,13 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <LinearLayout
-                android:id="@+id/ll_spinner"
+            <Spinner
+                android:id="@+id/sp_feature"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:background="@drawable/shape_item_cr_up"
-                android:paddingHorizontal="20dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center|start"
-                    android:hint="Feature"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
-            </LinearLayout>
+                android:layout_height="55dp"
+                android:background="@drawable/style_spinner"
+                android:layout_marginTop="10dp"
+                />
 
 
             <View
@@ -115,6 +100,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/et_minRange"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:gravity="center|start"
@@ -149,6 +135,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/et_maxRange"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:gravity="center|start"
@@ -167,6 +154,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/et_numberAprrover"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/shape_item_cr_up"
@@ -177,25 +165,20 @@
                 android:paddingHorizontal="20dp" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_approver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
                 />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/primary_color"
-                android:text="ADD TO LIST"
-                android:textSize="16sp" />
-
-            <Button
+                android:id="@+id/btn_reset"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="50dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/primary_color"
-                android:text="RESET"
+                android:text="UPDATE"
                 android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>

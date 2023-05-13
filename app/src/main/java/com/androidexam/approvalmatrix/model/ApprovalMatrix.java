@@ -14,8 +14,8 @@ import java.util.List;
 @Entity
 public class ApprovalMatrix implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey
+    private int matrixId;
 
     @ColumnInfo
     private String matrixAlias;
@@ -32,25 +32,21 @@ public class ApprovalMatrix implements Serializable {
     @ColumnInfo
     private String numberOfApproval;
 
-    @ColumnInfo
-    @TypeConverters(ListConverter.class)
-    private List<List<String>> approvers;
-
-    public ApprovalMatrix(String matrixAlias, String feature, String minimumRange, String maximumRange, String numberOfApproval, List<List<String>> approvers) {
+    public ApprovalMatrix(int matrixId, String matrixAlias, String feature, String minimumRange, String maximumRange, String numberOfApproval) {
+        this.matrixId = matrixId;
         this.matrixAlias = matrixAlias;
         this.feature = feature;
         this.minimumRange = minimumRange;
         this.maximumRange = maximumRange;
         this.numberOfApproval = numberOfApproval;
-        this.approvers = approvers;
     }
 
-    public int getId() {
-        return id;
+    public int getMatrixId() {
+        return matrixId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMatrixId(int matrixId) {
+        this.matrixId = matrixId;
     }
 
     public String getMatrixAlias() {
@@ -91,13 +87,5 @@ public class ApprovalMatrix implements Serializable {
 
     public void setNumberOfApproval(String numberOfApproval) {
         this.numberOfApproval = numberOfApproval;
-    }
-
-    public List<List<String>> getApprovers() {
-        return approvers;
-    }
-
-    public void setApprovers(List<List<String>> approvers) {
-        this.approvers = approvers;
     }
 }
